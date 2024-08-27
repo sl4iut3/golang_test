@@ -1,0 +1,17 @@
+package main
+
+import (
+	"fmt"
+	"sl/lemarcel"
+  "text/template"
+)
+
+
+func main() {
+  const form= `station {{.GetName()}} : liste vélos : {{.GetListeVelo()}}``
+  t := template.Must(template.New("form").Parse("form"))
+	lStations := lemarcel.Get_data_stations()
+	for i := 0; i < len(lStations); i++ {
+		fmt.Println(lStations[i].GetName(), lStations[i].GetListeVelo())
+	}
+}
